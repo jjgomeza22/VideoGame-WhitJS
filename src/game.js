@@ -1,9 +1,26 @@
 const canvas = document.querySelector('#game');
 const game = canvas.getContext('2d');
 
-const startGame = () => {
-    let canvasSize;
+let canvasSize;
+let elementSize;
 
+const startGame = () => {
+    game.font = (elementSize - constants.iconSize) + 'px Verdana';
+    game.textAlign = 'end';
+
+    const map = maps[constants.mapNumber];
+    const mapRows = map.trim().split('\n');
+    const mapRowCols = mapRows.map(row => row.trim().split(''));
+    const x = elementSize + 0.5;
+    const y = elementSize - 1.5;
+    mapRowCols.forEach((row, indexRow) => {
+        row.forEach((col, indexCol) => {
+            game.fillText(emojis[col], x*(indexCol + 1), y*(indexRow + 1));
+        });
+    });
+};
+
+const setCanvasSize = () => {
     canvasSize = window.innerHeight * 0.8;
     if (window.innerHeight > window.innerWidth){
         canvasSize = window.innerWidth * 0.8;
@@ -12,14 +29,9 @@ const startGame = () => {
     canvas.setAttribute('width', canvasSize);
     canvas.setAttribute('height', canvasSize);
 
-    const elementSize = canvasSize / 10;
-    console.log(elementSize);
-    game.font = elementSize.toString() + 'px Verdana';
-    game.textAlign = 'end';
-
-    for (let i = 1; i <= 10; i++) {
-        game.fillText(emojis['X'], elementSize* i, elementSize);
-    }
+    elementSize = canvasSize / constants.iconNumber;
+    startGame();
 };
 
-window.addEventListener('load', startGame);
+window.addEventListener('load', setCanvasSize);
+window.addEventListener('resize', setCanvasSize);
