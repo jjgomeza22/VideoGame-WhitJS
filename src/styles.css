@@ -12,7 +12,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     width: 100vw;
-    height: 90vh;
+    height: 85vh;
 }
 
 canvas {
@@ -47,6 +47,7 @@ button:not(:last-child) {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-top: 10px;
     width: 80%;
     max-width: 460px;
 }
