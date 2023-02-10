@@ -167,6 +167,10 @@ const setCanvasSize = () => {
     elementSize = canvasSize / constants.iconNumber;
     x = elementSize + 0.5;
     y = elementSize - 1.5;
+
+    playerPosition.x = undefined;
+    playerPosition.y = undefined;
+
     startGame();
 };
 

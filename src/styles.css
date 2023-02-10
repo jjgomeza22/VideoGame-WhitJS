@@ -68,4 +68,7 @@ p {
         margin-left: 100%;
         margin-right: 100%;
     }
+    .game-container {
+        height: 50vh;
+    }
 }
